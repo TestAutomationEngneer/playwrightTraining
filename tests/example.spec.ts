@@ -112,3 +112,38 @@ test('assertions for all subcategories - soft assertions', async ({page}) => {
   //!!!!! uruchomić test w terminau i zobaczyć wynik
   //npx playwright test -g "assertions for all subcategories - soft assertions"
 });
+
+test('fill form', async ({page}) => {
+
+ 
+  await page.goto('http://www.automationpractice.pl/index.php', { waitUntil: 'domcontentloaded' });
+
+  //click on contact us link
+  await page.getByText('Contact us').first().click();
+
+  //fill form
+  //select subject heading
+  await page.selectOption('id=id_contact', 'Customer service');
+
+  //fill email
+  await page.fill('id=email', 'customer@op.pl');
+
+  //fill order reference
+  await page.fill('id=id_order', '1234');
+
+//upload file
+  const input = await page.$('id=fileUpload');
+  await input.setInputFiles('C:\\test.txt');
+
+  //fill message
+  await page.fill('id=message', 'This is my message');
+
+  //click send button
+  await page.click('id=submitMessage');
+
+  //assertion - check if message was sent
+  await expect(page.locator('.alert-success')).toHaveText('Your message has been successfully sent to our team.');
+
+  
+  await page.close();
+});
