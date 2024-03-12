@@ -3,7 +3,7 @@ import { test, expect, chromium } from '@playwright/test';
 test('fill form with hooks', async ({ page }) => {
 
 
-    //await page.goto('http://www.automationpractice.pl/index.php', { waitUntil: 'domcontentloaded' });
+    await page.goto('http://www.automationpractice.pl/index.php', { waitUntil: 'domcontentloaded' });
 
     //click on contact us link
     await test.step('Click on contact us link', async () => {
