@@ -29,6 +29,7 @@ const config: PlaywrightTestConfig = {
     browserName: 'chromium',
     baseURL: 'http://www.automationpractice.pl/index.php',
     ignoreHTTPSErrors: true,
+    storageState: 'state.json',
     headless: false,
     trace: 'retain-on-failure',
     screenshot: 'off',
