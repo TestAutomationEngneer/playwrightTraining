@@ -13,9 +13,16 @@ const config: PlaywrightTestConfig = {
 
   expect: {
      timeout: 6000,
+     toHaveScreenshot:
+      {
+        threshold: 0.1,
+        maxDiffPixels: 10,
+      },
     },
  
   fullyParallel: true,
+  
+  snapshotDir: 'snapshots',
 
   forbidOnly: !!process.env.CI,
 
@@ -32,7 +39,7 @@ const config: PlaywrightTestConfig = {
     storageState: 'state.json',
     headless: false,
     trace: 'retain-on-failure',
-    screenshot: 'off',
+    screenshot: 'on',
     launchOptions:{
       slowMo: 1000,
     },
